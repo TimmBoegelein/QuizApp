@@ -26,20 +26,28 @@
     <!-- Aufbau der Quizkarte -->
     <div class="container">
         <div class="card quiz-card">
-            <img src="img/brainbg.jpg" class="card-img-top">
+            <img src="img/brainbg.jpg" id="header-image" class="card-img-top">
+
+            <div class="progress" role="progressbar">
+                <div class="progress-bar" id="progress-bar" style="width: 0%">25%</div>
+            </div>
 
             <div class="card-body" id="endScreen" style="display: none;">
-                <div class="text-center">
+                <div class="text-center final-headline">
                     Quiz beendet!
                 </div>
 
-                <div>
-                    <img class="width-100" src="img/trophy.png">
-                </div>
 
                 <div class="text-center">
                     Du hast <b id="amount-of-right-questions">XXX</b> Fragen von <b id="amount-of-questions">XXX</b> richtig beantwortet.
                 </div>
+
+                <div class="button-row">
+                    <button onclick="restartGame()" class="btn btn-primary">Erneut spielen</button>
+                </div>
+
+
+
             </div>
 
             <div class="card-body" id="questionBody">
