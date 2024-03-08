@@ -63,6 +63,12 @@ let rightQuestions = 0;
 // GLOBALE VARIABLE UM FÜR DIE FUNKTION "showQuestion" DEN ZÄHLER AUF 0 ZU SETZEN, DAMIT MIT DER 1. FRAGE BEGONNEN WIRD
 let currentQuestion = 0;
 
+// VARIABLE FÜR SOUND BEIM RICHTIGEN BEANTWORTEN EINER FRAGE
+let AUDIO_SUCCESS = new Audio('audio/success.mp3');
+
+// VARIABLE FÜR DEN SOUND BEIM FALSCHEN BEANTWORTEN EINER FRAGE
+let AUDIO_FAIL = new Audio('audio/fail.mp3');
+
 // FUNKTION UM DIE LÄNGE DES ARRAYS "QUESTIONS" EINZUBINDEN (1 VON 7 FRAGEN)
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length;
@@ -109,10 +115,12 @@ function answer(selection) {
 
     if (selectedQuestionNumber == question['right_answer']) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        AUDIO_SUCCESS.play();
         rightQuestions++;
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        AUDIO_FAIL.play();
     }
     document.getElementById('next-button').disabled = false;
 }
